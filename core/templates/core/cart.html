@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/cart_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+    <h1>Koszyk</h1>
+    <div class ="cart_info_section">
+        <div class ="item_section">
+            {% for item in cart_items %}
+            <div class="item_card">
+                <div class="item_miniature">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
+                </div>
+                <div class="product_info">
+                    <h2>{{ item.product.title }}</h2>
+                    <h4>{{ item.product.category }}</h4>
+                    <h5>Cena: {{ item.product.price }}zł</h5>
+
+                    <div class="item_update_button">
+                        <form action="{% url 'update_quantity' item.product.id %}" method="POST">
+                            {% csrf_token %}
+                            <label for="quantity"> Ilość:</label>
+                            <input type="number" id="quantity" name="quantity" min="0" max="{{ item.product.inventory }}" value="{{ item.quantity }}" >
+                            <button type="submit">Zmień ilość</button>
+                        </form>
+                        <form action="{% url 'delete_from_cart' item.product.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Usuń produkt</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <p>No cats available right now :(</p>
+            {% endfor %}
+        </div>
+        <div class ="cart_user_section"></div>
+    </div>
+
+    <div class ="checkout_section">
+        <div class ="price_box">
+            <h2>Wartość produktów w koszyku: {{ cart_value }}zł</h2>
+        </div>
+        <div class ="checkout_button_box">
+            <a href="{% url 'checkout' %}">
+                <div class="checkout_button">Dostawa i płatność</div>
+            </a>
+        </div>
+    </div>
+    </div>
+{% endblock %}

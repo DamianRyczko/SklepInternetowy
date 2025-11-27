@@ -1,0 +1,55 @@
+{% extends 'core/base_forms.html' %}
+
+{% block content %}
+	<div class="main_container">
+     {% if request.resolver_match.url_name == 'add_product' %}
+        <h1>Dodaj produkt: </h1>
+     {% else %}
+         <h1>Edytuj produkt: </h1>
+     {% endif %}
+     <div class="main_form_box">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <label for="{{ form.title.id_for_label }}">Nazwa produktu:</label><br>
+                        {{ form.title }}
+                    </div>
+                    <div class="form_box">
+                        <label for="{{ form.description.id_for_label }}">Opis:</label><br>
+                        {{ form.description }}
+                    </div>
+                    <div class="form_box">
+                        <label for="{{ form.price.id_for_label }}">Cena:</label><br>
+                        {{ form.price }}
+                    </div>
+                    <div class="form_box">
+                        <label for="{{ form.inventory.id_for_label }}">Ilosć na stanie:</label><br>
+                        {{ form.inventory }}
+                    </div>
+                    <div class="form_box">
+                        <label for="{{ form.category.id_for_label }}">Wybierz kategorię:</label><br>
+                        {{ form.category }}
+                    </div>
+                    <div class="form_box_image">
+                        <label for="{{ form.image.id_for_label }}">Wybierz zdjęcie:</label><br>
+                        {{ form.image }}
+                    </div>
+                    <div class="submit_button">
+                    {% if request.resolver_match.url_name == 'add_product' %}
+                    <button type="submit">Dodaj produkt</button>
+
+                    {% else %}
+                     <button type="submit">Zapisz</button>
+                    {% endif %}
+                    </div>
+                </form>
+            </div>
+         </div>
+    {% if user_form.errors or customer_form.errors %}
+        <div class="error_box">
+            <p>Please correct the errors below:</p>
+            {{ user_form.errors }}
+            {{ customer_form.errors }}
+        </div>
+    {% endif %}
+{% endblock %}

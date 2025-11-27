@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Cat Store{% endblock %}</title> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+    {% block banner %}
+    {% endblock %}
+
+    <nav>
+        <div class="nav_menu">
+            <a href="{% url 'orders' %}">
+                <div class="nav_button">Historia zamówień</div>
+            </a>
+
+            <a href="{% url 'home' %}">
+                <div class="nav_button">Powrót do sklepu</div>
+            </a>
+            <a href="{% url 'cart' %}">
+                <div class="nav_button">Koszyk</div>
+            </a>
+        </div>
+
+        <div class="user_panel">
+            <div class="user_section">
+                {% if user.is_authenticated %}
+                    Zalogowany jako: {{ user.username }}
+                {% else %}
+                    Nie jesteś zalgowany
+                {% endif %}
+            </div>
+            <div class="user_controls">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><div class="nav_button">Wyloguj</div></a>
+                {% else %}
+                    <a href="{% url 'login' %}"><div class="nav_button">Zaloguj</div></a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="main_container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <h2>Ta strona to gówno i tutaj są jej wykonawcy : </h2><br>
+        <ul>
+            <li>Damian Ryczko</li>
+            <li>Małgorzata Sokołwska </li>
+        </ul>
+        <br>
+        <h4>Kontakt: 281188@student.pwr.edu.pl</h4>
+    </footer>
+
+</body>
+</html>

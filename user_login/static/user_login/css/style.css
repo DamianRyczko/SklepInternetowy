@@ -1,0 +1,99 @@
+
+:root {
+    --primary-color: #ff9f43;   /* Cat Orange */
+    --secondary-color: #576574; /* Dark Grey */
+    --navbar-color: #465a63;
+    --background-color: #ededd1;
+    --main-boc-color: #cad9e0;
+    --nav-button-color: #ffffff;
+    --button-color:#ff9f43;
+    --hover-button-color:#d68336;
+    --product-hover-color:#575974
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 3. Body Styling */
+body {
+    font-family: 'Lato', sans-serif;
+
+    background-color: var(--background-color);
+    min-height: 600px;
+}
+#myVideo {
+    position: fixed;
+    right: -300px;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -99;
+    object-fit: cover;
+    play-during: auto;
+}
+.main_container{
+    background-color: var(--navbar-color);
+    width: 30%;
+    min-height: 400px;
+    margin: 100px auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+.main_container h1{
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px #ffffff solid;
+}
+.form_box{
+    margin-top: 20px;
+    text-align: left;
+}
+a{
+    margin-top: 50px;
+    color: #ffffff;
+}
+.form_box{
+    font-size: large;
+    margin-bottom: 10px;
+}
+.form_box input{
+    width: 100%;
+    margin-top: 5px;
+    height: 30px;
+    background-color: white;
+}
+
+.submit_button{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+}
+.submit_button button {
+    width: 80%;
+    height: 100%;
+    background-color: #ff9f43;
+    text-align: center;
+}
+.submit_button button:hover {
+    cursor: pointer;
+}
+.error_box{
+    color: red;
+    background: #ffeeee;
+    padding: 10px;
+    width: 50%;
+    margin: 20px auto 10px;
+    border-radius: 20px;
+    overflow: scroll;
+}

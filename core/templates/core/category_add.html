@@ -1,0 +1,45 @@
+{% extends 'core/base_forms.html' %}
+
+{% block content %}
+	<div class="main_container">
+
+    {% if request.resolver_match.url_name == 'add_category' %}
+        <h1>Dodaj kategorię: </h1>
+
+    {% else %}
+        <h1>Edytuj kategorię: </h1>
+    {% endif %}
+
+     <div class="main_form_box">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <label for="{{ form.title.id_for_label }}">Nazwa kategorii:</label><br>
+                        {{ form.title }}
+                    </div>
+                    <div class="form_box">
+                        <label for="{{ form.description.id_for_label }}">Opis:</label><br>
+                        {{ form.description }}
+                    </div>
+
+                   <div class="submit_button">
+                    {% if request.resolver_match.url_name == 'add_category' %}
+                    <button type="submit">Dodaj kategorię</button>
+
+                    {% else %}
+                     <button type="submit">Zapisz</button>
+                    {% endif %}
+
+                    </div>
+
+                </form>
+            </div>
+         </div>
+    {% if user_form.errors or customer_form.errors %}
+        <div class="error_box">
+            <p>Please correct the errors below:</p>
+            {{ user_form.errors }}
+            {{ customer_form.errors }}
+        </div>
+    {% endif %}
+{% endblock %}

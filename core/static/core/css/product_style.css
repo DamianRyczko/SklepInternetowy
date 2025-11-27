@@ -1,0 +1,110 @@
+
+:root {
+    --primary-color: #ff9f43;   /* Cat Orange */
+    --secondary-color: #576574; /* Dark Grey */
+    --navbar-color: #465a63;
+    --product-card-color: #ededd1;
+    --main-boc-color: #cad9e0;
+    --nav-button-color: #ffffff;
+    --button-color:#ff9f43;
+    --hover-button-color:#d68336;
+    --product-hover-color:#575974
+
+}
+.main_container h1{
+    padding: 20px;
+    height: 70px;
+    color: #ffffff;
+    margin: 20px 20px 0px;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+}
+
+.item_section{
+    width: 95%;
+    overflow: scroll;
+    padding: 10px;
+    box-sizing:content-box;
+}
+.item_section a{
+    text-decoration: none;
+}
+.item_card{
+    height: 200px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+.item_miniature{
+    display: flex;
+    align-content: center;
+    justify-content: left;
+    margin-left: 2%;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.item_miniature img{
+    width: 100%;
+    height: 100%;
+}
+.item_info{
+    background-color: var(--product-card-color);
+    padding: 20px;
+    width: 80%;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.description_box{
+    height: 70px;
+    overflow: scroll;
+}
+.button_box{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    margin-left: auto;
+}
+.button_box h4{
+    padding: 10px;
+}
+.button_box a{
+    text-decoration: none;
+    color: #ffffff;
+
+}
+.button_box a:visited{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.function_button{
+    padding: 5px;
+    background-color: #ff9f43;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+.function_button:hover{
+    background-color: #d68336;
+}
+.add_card{
+    margin-left: 2%;
+    background-color: darkseagreen;
+    height: 200px;
+    margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    color: #ffffff;
+    align-content: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 100px;
+}
+.add_card:hover{
+    background-color: darkolivegreen;
+}

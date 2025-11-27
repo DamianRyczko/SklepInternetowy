@@ -1,0 +1,44 @@
+{% extends 'core/base_employee.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/product_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+    <h1>Panel produktów</h1>
+        <div class ="item_section">
+            {% for product in products %}
+             <div class="item_card">
+                <div class="item_miniature">
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="item_info">
+                        <h2>{{ product.title }}</h2>
+                        <div class="description_box">Opis: <p>{{ product.description }}</p></div>
+                        <h4>{{ product.price }} zł</h4>
+                        <h4>{{ product.inventory }} szt</h4>
+
+                        <div class="button_box">
+                            <h4>{{ product.last_update }}</h4>
+                            <a href="{% url 'edit_product' product.id %}">
+                                <div class="function_button">Edutuj</div>
+                            </a>
+                            <a href="{% url 'edit_product' product.id%}">
+                                <div class="function_button">Usuń</div>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                {% empty %}
+                    <p>No cats available right now :(</p>
+                {% endfor %}
+        <a href="{% url 'add_product' %}">
+            <div class="add_card">
+                <h2>+</h2>
+            </div>
+        </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/orders_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+        <h1>Historia zamówień</h1>
+        <div class ="cart_info_section">
+            <div class ="item_section">
+                {% for item in cart_items %}
+
+                <div class="item_card">
+                    <div class="item_miniature">
+                        <img src="{{ item.product.image }}" alt="{{ item.product.title }}">
+                    </div>
+                    <div class="product_info">
+
+                        <h2>{{ item.product.title }}</h2>
+                        <h4>{{ item.product.category }}</h4>
+                        <h5>Cena: {{ item.product.price }}zł</h5>
+                        <h5>Ilość: {{ item.quantity }}</h5>
+
+                        <div class="item_delete_button">
+
+                        </div>
+                    </div>
+                </div>
+
+        {% empty %}
+            <p>No cats available right now :(</p>
+
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

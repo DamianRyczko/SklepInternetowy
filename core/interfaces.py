@@ -1,0 +1,1 @@
+#Tutaj deklarujsz interfejsy (klasy ABC)

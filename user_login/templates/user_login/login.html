@@ -1,0 +1,32 @@
+{% extends 'user_login/base.html' %}
+
+    {% block content %}
+    <div class="main_container">
+        <h1>Logowanie: </h1>
+        <div class="register_form_box">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <label for="{{ login_form.username.id_for_label }}">Nazwa Użytkownika:</label><br>
+                        {{ login_form.username }}
+                    </div>
+
+                    <div class="form_box">
+                        <label for="{{ login_form.password.id_for_label }}">Hasło:</label><br>
+                        {{ login_form.password }}
+                    </div>
+                    <div class="submit_button">
+                        <button type="submit">Zaloguj</button>
+                    </div>
+
+                </form>
+        </div>
+         <a href="{% url 'register' %}">Nie masz konta? Zarejestruj się</a>
+    </div>
+        {% if login_form.errors %}
+            <div class="error_box">
+                <p>Please correct the errors below:</p>
+                {{ login_form.errors }}
+            </div>
+        {% endif %}
+    {% endblock %}

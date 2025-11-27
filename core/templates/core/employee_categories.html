@@ -1,0 +1,36 @@
+{% extends 'core/base_employee.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+    <h1>Koszyk</h1>
+    <div class ="cart_info_section">
+        <div class ="item_section">
+            {% for category in categories %}
+            <div class="category_card">
+                <div class="category_info">
+                    <h2>{{ category.title }}</h2>
+                    <h4>{{ category.description }}</h4>
+
+                    <div class="category_update_button">
+                        <a href="{% url 'edit_category' category.id %}">
+                            <div class="nav_button">Edutuj</div>
+                        </a>
+                        <a href="{% url 'edit_category' category.id%}">
+                            <div class="nav_button">Edutuj</div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+                <p>No cats available right now :(</p>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

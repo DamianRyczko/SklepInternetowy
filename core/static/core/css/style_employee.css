@@ -1,0 +1,126 @@
+
+:root {
+    --primary-color: #ff9f43;   /* Cat Orange */
+    --secondary-color: #576574; /* Dark Grey */
+    --navbar-color: #465a63;
+    --background-color: green;
+    --main-boc-color: #cad9e0;
+    --nav-button-color: #ffffff;
+    --button-color:#ff9f43;
+    --hover-button-color:#d68336;
+    --product-hover-color:#575974
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main_container{
+    min-height: 800px;
+    min-width: 1000px;
+    overflow: scroll;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    background-color: var(--main-boc-color);
+    display: flex;
+    flex-direction: column;
+}
+/* 3. Body Styling */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--background-color);
+}
+
+/* 4. Navbar Styling */
+nav {
+    z-index: 100;
+    background-color: var(--navbar-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Pushes items to edges */
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0px 8px 15px -4px rgba(5,3,21,1);
+    margin-bottom:20px;
+    position: sticky;
+    top: 0;
+}
+
+.nav_menu{
+    display: flex;
+    flex-direction: row;
+}
+.user_panel{
+    display: flex;
+    flex-direction: row;
+}
+.user_section{
+    background-color: white;
+    padding: 3px 10px;
+    color: #000000;
+    display: flex;
+    align-content: center;
+    border-radius: 20px;
+}
+.nav_button {
+    background-color: var(--secondary-color);
+    padding: 3px 10px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    margin-left: 10px;
+    transition-duration: 0.3s;
+}
+.nav_button:hover{
+    background-color: var(--product-hover-color);
+    color: var(--primary-color);
+}
+.nav_menu a{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav_menu a:visited{
+    color: #ffffff;
+    text-decoration: none;
+}
+.user_controls a{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.user_controls a:visited{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer{
+    border-top: solid 3px var(--navbar-color);
+    box-shadow: 0px 4px 15px 4px rgba(5,3,21,1);
+    margin-top: 50px;
+    padding: 20px;
+    width: 100%;
+    height: 200px;
+    color: #000000;
+    background-color: var(--main-boc-color);
+
+}
+footer h4{
+    text-align: center;
+}
+footer ul{
+    margin-left: 40px;
+}
+button:active{
+    border: inset 2px;
+}

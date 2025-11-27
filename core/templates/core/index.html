@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/index_styles.css' %}">
+{% endblock %}
+
+{% block banner %}
+    <div class = "banner">
+        <div class = "banner_title_box">
+            <h1>🐾Koci sklep🐾</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class = "main_product_container">
+        <div class ="left_section">
+            <div class="filter_form_box">
+                <form method="get">
+
+                    <div class="filter-box">
+                        <label for="{{ filter.form.title.id_for_label }}">Szukaj kota:</label><br>
+                        {{ filter.form.title }}
+                    </div>
+
+                    <div class="filter-box">
+                        <label for="{{ filter.form.category.id_for_label }}">Kategoria:</label><br>
+                        {{ filter.form.category }}
+                    </div>
+
+                    <div class="filter-box">
+                        <label for="{{ filter.form.ordering.id_for_label }}">Sortuj według:</label><br>
+                        {{ filter.form.ordering }}
+                    </div>
+                    <div class="submit_button">
+                        <button type="submit">Zastosuj</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class ="center_section">
+            {% for product in products %}
+
+            <div class="product_card">
+                <div class="product_minature">
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                </div>
+                <div class="product">
+                    <div class="product_description">
+                        <h3>{{ product.title }}</h3>
+                        <h4>{{ product.category }}</h4>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div class="product_buy_box">
+                    <div class="product_price">
+                        <h3>
+                            Cena: {{ product.price }}zł
+                            <span style="margin-left: 20px;">Dostepne: {{ product.inventory }}</span>
+                        </h3>
+                    </div>
+                    <div class="buy_button">
+                        <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                            {% csrf_token %}
+                            <label for="quantity"></label>
+
+                            <button type="submit">Dodaj do koszyka</button>
+                            <div class="number_buy">
+                                <input type="number" id="quantity" name="quantity" min="1" max="{{ product.inventory }}" value="1" >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+
+        {% empty %}
+            <p>No cats available right now :(</p>
+
+        {% endfor %}
+
+        </div>
+        <div class ="right_section">
+
+        </div>
+    </div>
+{% endblock %}
