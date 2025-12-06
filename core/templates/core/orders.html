@@ -8,26 +8,38 @@
 {% block content %}
     <div class="main_container">
         <h1>Historia zamówień</h1>
-        <div class ="cart_info_section">
-            <div class ="item_section">
-                {% for item in cart_items %}
+        <div class ="order_info_section">
+            <div class ="order_section">
+                {% for row in order_list %}
+                <div class="order_info">
+                        <h4>Data złożenia zamówienia: {{ row.order_details.placed_at }}</h4>
+                        <h4>Kod pocztowy: {{ row.order_details.address.zip_code }}</h4>
 
-                <div class="item_card">
-                    <div class="item_miniature">
-                        <img src="{{ item.product.image }}" alt="{{ item.product.title }}">
-                    </div>
-                    <div class="product_info">
+                        {% if row.order_details.payment_status == 'P' %}
+                            <h4>Payments Status: Pending</h4>
+                        {% endif %}
+                        {% if row.order_details.payment_status == 'C' %}
+                            <h4>Payments Status: Completed</h4>
+                        {% endif %}
+                        {% if row.order_details.payment_status == 'F' %}
+                            <h4>Payments Status: Failed</h4>
+                        {% endif %}
 
-                        <h2>{{ item.product.title }}</h2>
-                        <h4>{{ item.product.category }}</h4>
-                        <h5>Cena: {{ item.product.price }}zł</h5>
-                        <h5>Ilość: {{ item.quantity }}</h5>
-
-                        <div class="item_delete_button">
-
-                        </div>
-                    </div>
+                        {% if row.order_details.order_status == 'R' %}
+                            <h4>Order Status: Received</h4>
+                        {% endif %}
+                        {% if row.order_details.order_status == 'S' %}
+                            <h4>Order Status: Sent</h4>
+                        {% endif %}
+                        {% if row.order_details.order_status == 'C' %}
+                            <h4>Order Status: Completed</h4>
+                        {% endif %}
                 </div>
+                    <div class="order_items">
+                        {% for item in row.items%}
+                            <h4>Nazwa produktu: {{ item.product_name }}</h4> <p>Cena: {{ item.price_on_order }}</p> <p>Ilość: {{ item.quantity }}</p><br>
+                        {% endfor %}
+                    </div>
 
         {% empty %}
             <p>No cats available right now :(</p>

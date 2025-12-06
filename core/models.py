@@ -41,8 +41,6 @@ class Customer(models.Model):
         ordering = ['user__last_name', 'user__first_name']
 
 
-
-
 class Address(models.Model):
     street_address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
@@ -61,9 +59,22 @@ class Order(models.Model):
         (PAYMENT_STATUS_FAILED, 'Failed'),
     ]
 
+    ORDER_STATUS_RECEIVED = 'R'
+    ORDER_STATUS_SENT = 'S'
+    ORDER_STATUS_COMPLETED= 'C'
+
+    ORDER_STATUS_CHOICES = [
+        (ORDER_STATUS_RECEIVED, 'Received'),
+        (ORDER_STATUS_SENT, 'Sent'),
+        (ORDER_STATUS_COMPLETED, 'Completed'),
+    ]
+
     placed_at = models.DateTimeField(auto_now_add=True)
     payment_status = models.CharField(
         max_length=1, choices=PAYMENT_STATUS_CHOICES, default=PAYMENT_STATUS_PENDING
+    )
+    order_status = models.CharField(
+        max_length=1, choices=ORDER_STATUS_CHOICES, default=ORDER_STATUS_RECEIVED
     )
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     address = models.ForeignKey(Address, on_delete=models.PROTECT)

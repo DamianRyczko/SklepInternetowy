@@ -21,24 +21,18 @@
 /* 3. Body Styling */
 body {
     font-family: 'Lato', sans-serif;
-
     background-color: var(--background-color);
     min-height: 600px;
 }
-#myVideo {
-    position: fixed;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -99;
-    object-fit: cover;
-    play-during: auto;
-}
+
 .main_container{
     background-color: var(--navbar-color);
+    margin-left: auto;
+    margin-right: auto;
     width: 30%;
     min-height: 400px;
-    margin: 100px auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -52,15 +46,14 @@ body {
     padding: 10px;
     border-bottom: 1px #ffffff solid;
 }
-.form_box{
-    margin-top: 20px;
-    text-align: left;
-}
+
 a{
     margin-top: 50px;
     color: #ffffff;
 }
 .form_box{
+    margin-top: 20px;
+    text-align: left;
     font-size: large;
     margin-bottom: 10px;
 }
@@ -69,6 +62,40 @@ a{
     margin-top: 5px;
     height: 30px;
     background-color: white;
+}
+.form_box input{
+    width: 100%;
+    margin-top: 5px;
+    height: 30px;
+    background-color: white;
+}
+.form_box textarea{
+    width: 100%;
+    margin-top: 5px;
+    height: 70px;
+    background-color: white;
+    resize: vertical;
+}
+.form_box select{
+    width: 100%;
+    margin-top: 5px;
+    height: 30px;
+    background-color: white;
+}
+.form_box_image{
+    margin-top: 20px;
+    text-align: left;
+    font-size: large;
+    margin-bottom: 10px;
+    width: 80%;
+}
+.form_box_image input {
+    font-size: 15px;
+    margin-top: 5px;
+}
+.form_box_image  {
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 .submit_button{

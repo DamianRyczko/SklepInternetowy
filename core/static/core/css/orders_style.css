@@ -21,107 +21,41 @@
     border-radius: 20px;
     background-color: var(--primary-color);
 }
-.cart_info_section{
+.order_info_section{
+    width: 90%;
+    min-height: 600px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order_section{
+    padding: 10px;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     min-height: 700px;
 }
-.item_section{
-    width: 70%;
+.order_items{
+    margin-left:10%;
+    width: 90%;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    background-color: pink;
     overflow: scroll;
-    margin: 20px;
+    border-radius: 10px;
     padding: 10px;
-
-}
-.item_card{
-    height: 120px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-}
-.item_miniature{
-    display: flex;
-    align-content: center;
-    justify-content: left;
-    margin-left: 2%;
-    width: 20%;
-    height: 100%;
-    box-sizing: border-box;
 }
 
-.item_miniature img{
-    width: 100%;
-    height: 100%;
-}
-.product_info{
+.order_info{
     background-color:var(--background-color);
     padding: 20px;
     width: 80%;
     margin-left: 10px;
     border-radius: 10px;
 }
-.item_update_button{
-    padding: 5px 0px;
-    display: flex;
-    flex-direction: row;
-}
-.item_update_button button{
-    margin-left: 5px;
-    padding: 0px 2px;
-}
-.item_update_button input{
-    width:150px
-}
-.item_update_button button:hover{
-    cursor: pointer;
-}
-.cart_user_section{
-    background-color: black;
-    width: 30%;
-    min-height: 600px;
-    margin:20px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-}
 
-.checkout_section{
-    width: 100%;
-    min-height: 100px;
-    padding: 20px;
-    color: #ffffff;
-    background-color: var(--primary-color);
-}
-.checkout_section h2{
-    width: 100%;
-    border-bottom: #ffffff 3px solid;
-}
-.checkout_button_box{
-    margin-top: 10px;
-    width: 300px;
-    min-height: 30px;
-    text-align: center;
-    color: #000000;
-    margin-left: auto;
-    text-decoration: none;
-}
-.checkout_button{
-    border-radius: 20px;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    font-size: 20px;
-    background-color: #ffffff;
-}
-.checkout_button:hover{
-    background-color: var(--main-boc-color);
-}
-.checkout_button_box a{
-    color: #000000;
-    text-decoration: none;
-}
-.checkout_button_box a:visited{
-    color: #000000;
-    text-decoration: none;
-}
+

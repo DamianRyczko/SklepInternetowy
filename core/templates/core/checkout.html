@@ -41,11 +41,120 @@
                     <p>+48 {{ customer.phone_number }}</p>
                 </div>
                 <div class="address_form_box">
-                    <h2>Adres dostawy:</h2>
-                </div>
+                <h2>Adres dostawy:</h2>
+
+    {# --- WARIANT A: Adres jest już wybrany --- #}
+    {% if selected_address %}
+        <div class="selected_address_box" style="border: 2px solid green; padding: 15px;">
+            <h3>Wybrany adres:</h3>
+            <p>{{ selected_address.city }}</p>
+            <p>{{ selected_address.street_address }}</p>
+            <p>{{ selected_address.zip_code }}</p>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                <button type="submit" name="clear_address" value="true" >
+                    Zmień adres (Wyczyść wybór)
+                </button>
+            </form>
+        </div>
+
+
+    {% else %}
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="address_list">
+                {% for address in addresses %}
+                    <div class="address_option" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+
+                        <!-- Address Selection Radio -->
+                        <label style="cursor: pointer; display: block; flex-grow: 1;">
+                            <input type="radio" name="address_id" value="{{ address.id }}">
+                            <strong>{{ address.city }}</strong>,
+                            {{ address.street_address }},
+                            {{ address.zip_code }}
+                        </label>
+
+                        <!-- Delete Button -->
+                        <!-- FIX: Removed nested <form>. Used formaction to handle deletion via the main outer form. -->
+                        <!-- formnovalidate ensures we can delete even if the main form has required fields not filled -->
+                        <button type="submit"
+                                formaction="{% url 'delete_address' address.id %}"
+                                formnovalidate
+                                onclick="return confirm('Czy na pewno chcesz usunąć ten adres?')"
+                                style="background: none; border: none; color: red; cursor: pointer; font-weight: bold; margin-left: 10px;">
+                            [X]
+                        </button>
+
+                    </div>
+                {% empty %}
+                    <p>Nie masz zapisanych adresów. Dodaj jakiś w profilu! </p>
+                {% endfor %}
+            </div>
+
+            {% if addresses %}
+                <button type="submit">
+                    Wybierz ten adres
+                </button>
+                        {% endif %}
+                    </form>
+                {% endif %}
+            </div>
+            <a href="{% url 'add_address' %}">
+            <div class="add_address">
+                <h2>+</h2>
+            </div>
+            </a>
             </div>
         </div>
         <div class ="checkout_section">
+            <div class="card_form">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <p>{{ card_form.card_number.label }}</p>
+                        {{ card_form.card_number }}
+                    </div>
+
+                    <div class="form_box">
+                        <p>{{ card_form.card_owner.label }}</p>
+                        {{ card_form.card_owner }}
+                    </div>
+
+                    <div class="form_box">
+                        <p>{{ card_form.expiry_date.label }}</p>
+                        {{ card_form.expiry_date }}
+                    </div>
+
+                    <div class="form_box">
+                        <p>{{ card_form.cvv.label }}</p>
+                        {{ card_form.cvv }}
+                    </div>
+
+                    <div class="submit_button">
+                        <button type="submit" name="card_payment" value="true">Zapłać</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class = "blik_form">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <p>{{ blik_form.blik_code.label }}</p>
+                        {{ blik_form.blik_code }}
+                    </div>
+
+
+                    <div class="submit_button">
+                        <button type="submit" name="blik_payment" value="true">Zapłać</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
+
+
     </div>
 {% endblock %}

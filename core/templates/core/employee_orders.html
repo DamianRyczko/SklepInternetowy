@@ -2,9 +2,63 @@
 {% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'core/css/employee_order_style.css' %}">
 {% endblock %}
 
 {% block content %}
-    
+    <div class="main_container">
+    <h1>Panel zmówień</h1>
+        <div class ="item_section">
+            {% for order in orders %}
+             <div class="item_card">
+                    <div class="order_info">
+                        <h2>Zamówienie nr: {{ order.id }}</h2>
+                        <h4>Data złożenia zamówienia: {{ order.placed_at }}</h4>
+                        <h4>Kod pocztowy: {{ order.address.zip_code }}</h4>
+
+                        {% if order.payment_status == 'P' %}
+                            <h4>Payments Status: Pending</h4>
+                        {% endif %}
+                        {% if order.payment_status == 'C' %}
+                            <h4>Payments Status: Completed</h4>
+                        {% endif %}
+                        {% if order.payment_status == 'F' %}
+                            <h4>Payments Status: Failed</h4>
+                        {% endif %}
+
+                        {% if order.order_status == 'R' %}
+                            <h4>Order Status: Received</h4>
+                        {% endif %}
+                        {% if order.order_status == 'S' %}
+                            <h4>Order Status: Sent</h4>
+                        {% endif %}
+                        {% if order.order_status == 'C' %}
+                            <h4>Order Status: Completed</h4>
+                        {% endif %}
+
+                    <div class="button_box">
+                        {% if order.order_status == 'R' %}
+                        <form action="{% url 'order_sent' order.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="function_button">
+                                    Potwierdź wysłanie
+                                </button>
+                        </form>
+                        {% endif %}
+                        {% if order.order_status == 'S' %}
+                        <form action="{% url 'order_completed' order.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="function_button">
+                                    Zakończ zamówienie
+                                </button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+             </div>
+                {% empty %}
+                    <p>No cats available right now :(</p>
+                {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'core/css/product_style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/employee_product_style.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,11 +23,14 @@
                         <div class="button_box">
                             <h4>{{ product.last_update }}</h4>
                             <a href="{% url 'edit_product' product.id %}">
-                                <div class="function_button">Edutuj</div>
+                                <button class="function_button">Edutuj</button>
                             </a>
-                            <a href="{% url 'edit_product' product.id%}">
-                                <div class="function_button">Usuń</div>
-                            </a>
+                            <form action="{% url 'delete_product' product.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="function_button">
+                                    Usuń
+                                </button>
+                            </form>
                         </div>
                     </div>
                     </div>

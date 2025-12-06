@@ -71,10 +71,10 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    background-image: url('../images/emo_ziomek.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url('../images/anime.gif')
 }
 
 .checkout_section{
